@@ -1,0 +1,93 @@
+import java.util.Scanner;
+
+public class StringOperations {
+
+    // Check if string is palindrome
+    static boolean isPalindrome(String s) {
+        int n = s.length();
+        for (int i = 0; i < n / 2; i++) {
+            if (s.charAt(i) != s.charAt(n - 1 - i))
+                return false;
+        }
+        return true;
+    }
+
+    // Sort characters alphabetically (Bubble Sort)
+    static String sortAlphabetically(String s) {
+        char[] chars = s.toCharArray();
+        int n = chars.length;
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                if (chars[j] > chars[j + 1]) {
+                    char temp = chars[j];
+                    chars[j] = chars[j + 1];
+                    chars[j + 1] = temp;
+                }
+            }
+        }
+        return new String(chars);
+    }
+
+    // Reverse the string
+    static String reverseString(String s) {
+        String rev = "";
+        for (int i = s.length() - 1; i >= 0; i--) {
+            rev += s.charAt(i);
+        }
+        return rev;
+    }
+
+    // Concatenate original and reversed
+    static String concatenate(String s) {
+        return s + reverseString(s);
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int choice;
+
+        System.out.print("Enter a string: ");
+        String input = sc.nextLine();
+
+        do {
+            System.out.println("\n===== MENU =====");
+            System.out.println("1. Check Palindrome");
+            System.out.println("2. Sort Alphabetically");
+            System.out.println("3. Reverse the String");
+            System.out.println("4. Concatenate Original + Reversed");
+            System.out.println("5. Exit");
+            System.out.print("Enter your choice: ");
+            choice = sc.nextInt();
+
+            switch (choice) {
+                case 1:
+                    if (isPalindrome(input))
+                        System.out.println("\"" + input + "\" is a Palindrome.");
+                    else
+                        System.out.println("\"" + input + "\" is NOT a Palindrome.");
+                    break;
+
+                case 2:
+                    System.out.println("Alphabetical Order: " + sortAlphabetically(input));
+                    break;
+
+                case 3:
+                    System.out.println("Reversed String: " + reverseString(input));
+                    break;
+
+                case 4:
+                    System.out.println("Concatenated String: " + concatenate(input));
+                    break;
+
+                case 5:
+                    System.out.println("Exiting... Goodbye!");
+                    break;
+
+                default:
+                    System.out.println("Invalid choice! Please enter 1-5.");
+            }
+        } while (choice != 5);
+
+        sc.close();
+    }
+}
