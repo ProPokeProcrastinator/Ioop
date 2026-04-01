@@ -1,0 +1,55 @@
+abstract class Figure {
+    int x, y;
+
+    Figure(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    abstract int area();
+}
+
+class Rectangle extends Figure {
+    Rectangle(int x, int y) {
+        super(x, y);
+    }
+
+    int area() {
+        return x * y;
+    }
+}
+
+class Triangle extends Figure {
+    Triangle(int x, int y) {
+        super(x, y);
+    }
+
+    int area() {
+        return (x * y) / 2;
+    }
+}
+
+class Square extends Figure {
+    Square(int x) {
+        super(x, x);
+    }
+
+    int area() {
+        return x * x;
+    }
+}
+
+public class TestFigure {
+    public static void main(String[] args) {
+        Figure f;
+
+        f = new Rectangle(10, 5);
+        System.out.println("Rectangle Area: " + f.area());
+
+        f = new Triangle(10, 5);
+        System.out.println("Triangle Area: " + f.area());
+
+        f = new Square(4);
+        System.out.println("Square Area: " + f.area());
+    }
+}
