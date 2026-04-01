@@ -1,0 +1,107 @@
+interface Series {
+    int getNext();
+    void reset();
+    void setStart(int x);
+}
+
+class ByTwos implements Series {
+    int start;
+    int val;
+
+    ByTwos() {
+        start = 0;
+        val = 0;
+    }
+
+    public int getNext() {
+        val += 2;
+        return val;
+    }
+
+    public void reset() {
+        val = start;
+    }
+
+    public void setStart(int x) {
+        start = x;
+        val = x;
+    }
+}
+
+public class TestSeries {
+    public static void main(String[] args) {
+        ByTwos obj = new ByTwos();
+
+        obj.setStart(2);
+
+        for (int i = 0; i < 5; i++) {
+            System.out.println(obj.getNext());
+        }
+
+        obj.reset();
+        System.out.println("After reset: " + obj.getNext());
+    }
+}
+
+class Building {
+    int squareFeet;
+    int stories;
+
+    Building(int sf, int st) {
+        squareFeet = sf;
+        stories = st;
+    }
+
+    void display() {
+        System.out.println("Square Feet: " + squareFeet);
+        System.out.println("Stories: " + stories);
+    }
+}
+
+class House extends Building {
+    int bedrooms;
+    int baths;
+
+    House(int sf, int st, int bed, int bath) {
+        super(sf, st);
+        bedrooms = bed;
+        baths = bath;
+    }
+
+    void display() {
+        super.display();
+        System.out.println("Bedrooms: " + bedrooms);
+        System.out.println("Baths: " + baths);
+    }
+}
+
+class School extends Building {
+    int classrooms;
+    String gradeLevel;
+
+    School(int sf, int st, int cr, String gl) {
+        super(sf, st);
+        classrooms = cr;
+        gradeLevel = gl;
+    }
+
+    void display() {
+        super.display();
+        System.out.println("Classrooms: " + classrooms);
+        System.out.println("Grade Level: " + gradeLevel);
+    }
+}
+
+public class TestBuilding {
+    public static void main(String[] args) {
+        House h = new House(2000, 2, 3, 2);
+        School s = new School(5000, 3, 20, "High");
+
+        System.out.println("House Details:");
+        h.display();
+
+        System.out.println("\nSchool Details:");
+        s.display();
+    }
+}
+
