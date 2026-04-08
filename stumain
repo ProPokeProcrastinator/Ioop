@@ -1,0 +1,16 @@
+package edu.manipal.mit.main;
+
+import edu.manipal.mit.student.Student;
+import edu.manipal.mit.course.Course;
+import edu.manipal.mit.registration.Registration;
+
+public class MainApp {
+    public static void main(String[] args) {
+
+        Student s = new Student("Divyanshu", 101, "CSE", 8.5);
+        Course c = new Course("OOP", "Dr. Rao", 4);
+
+        Registration r = new Registration(s, c);
+        r.registerStudent();
+    }
+}
